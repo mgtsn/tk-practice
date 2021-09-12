@@ -2,10 +2,10 @@ from tkinter import *
 from tkinter import ttk
 
 
-def calculate():
+def calculate(*args):
     try:
         val = float(feet.get())
-        meters.set(int(0.3408 * val * 10000.0 + 0.5) / 10000)
+        meters.set(round(0.3408 * val, 2))
     except ValueError:
         pass
 
@@ -29,5 +29,10 @@ ttk.Label(frame, textvariable=meters).grid(column=2, row=2, sticky=(W, E))
 ttk.Label(frame, text="Meters").grid(column=3, row=2, sticky=W)
 
 ttk.Button(frame, text="Calculate", command=calculate).grid(column=3, row=3, sticky=E)
+
+for child in frame.winfo_children():
+    child.grid_configure(padx=5, pady=5)
+feet_entry.focus()
+root.bind("<Return>", calculate)
 
 root.mainloop()
