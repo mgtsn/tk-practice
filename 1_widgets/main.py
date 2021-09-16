@@ -4,15 +4,17 @@ from tkinter import ttk
 root = Tk()
 root.title("Widget Practice")
 
+
 def b1(*args):
     print("button 1")
+
 
 # first frame, goes on top
 frame1 = ttk.Frame(root)
 frame1.grid(column=0, row=0)
 
 # access the button's text, as well as change it. can be done before it is placed on the grid
-button1 = ttk.Button(frame1, text="First Button", command=)
+button1 = ttk.Button(frame1, text="First Button", command=b1)
 button1["text"] = "New text"
 button1.grid(column=0, row=1)
 
